@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script defer src="./js/app.js"></script>
+</head>
+<body data-page="register">
+  <main class="container">
+    <section class="card" aria-labelledby="register-title">
+      <h2 id="register-title" class="scribble">Volver a nacer</h2>
+
+      <form class="form" novalidate>
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" placeholder="Isaac" required />
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Correo</label>
+          <input id="reg-email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+        </div>
+
+        <div class="field">
+          <label for="reg-pass">Contraseña</label>
+          <input id="reg-pass" name="password" type="password" placeholder="********" required />
+        </div>
+
+        <div class="field">
+          <label for="reg-pass2">Confirmar contraseña</label>
+          <input id="reg-pass2" name="password2" type="password" placeholder="********" required />
+        </div>
+
+        <button class="btn" type="submit">Registrarme</button>
+        
+      </form>
+
+      <p class="muted">
+        ¿Si sabes quién eres?
+        <a class="link" href="./index.html">Inicia sesión wey</a>
+      </p>
+    </section>
+  </main>
+</body>
+</html>

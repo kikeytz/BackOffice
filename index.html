@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/styles.css" />
+     <script defer src="./js/app.js"></script>
+</head>
+
+  
+  <body data-page="login">
+      <figure class="login-hero" aria-hidden="true">
+        <img src="./img/login-bg.jpg" alt="Who am I?">
+      </figure>
+
+  <main class="container">
+    <section class="card" aria-labelledby="login-title">
+       <h2 id="login-title" class="scribble">¿Quién eres?</h2>
+      <form class="form" novalidate>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" placeholder="********" required />
+        </div>
+
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+
+      <p class="muted">
+        ¿No tienes cuenta?
+        <a class="link" href="./register.html">Crear cuenta</a>
+      </p>
+    </section>
+  </main>
+
+ 
+</body>
+</html>
