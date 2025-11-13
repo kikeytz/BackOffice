@@ -31,7 +31,7 @@ body[data-page="login"] {
 .container {
   max-width: 440px;
   margin: 0rem auto;
-  padding: 0 1rem;
+  padding: 4rem 1rem;
 }
 
 .card {
