@@ -30,7 +30,7 @@ body[data-page="login"] {
 
 .container {
   max-width: 440px;
-  margin: 3rem auto;
+  margin: 0rem auto;
   padding: 0 1rem;
 }
 
@@ -43,7 +43,6 @@ body[data-page="login"] {
 }
 
 h2 { margin-top: 0; }
-.scribble { font-family: "Gloria Hallelujah", cursive; }
 
 .login-hero { 
  margin: 0 0 .75rem; 
