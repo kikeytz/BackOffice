@@ -44,7 +44,7 @@ body[data-page="login"] {
 h2 { margin-top: 0; }
 .scribble { font-family: "Gloria Hallelujah", cursive; }
 
-.login-hero { margin: 0 750px 0.75rem; }
+.login-hero { margin: 0 50px 0.75rem; }
 .login-hero img {
   width: 100%;
   height: auto;
@@ -52,7 +52,6 @@ h2 { margin-top: 0; }
   border-radius: 10px;
 }
 
-.scribble { font-family: "Gloria Hallelujah", cursive; }
 
 
 .form { display: grid; gap: .75rem; }
