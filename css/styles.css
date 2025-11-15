@@ -37,10 +37,17 @@ body[data-page="login"] {
 .card {
   background: rgba(17,17,17,.85);
   border: 1px solid #27272a;
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 1.25rem;
   box-shadow: 0 6px 24px rgba(0,0,0,.35);
 }
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.grow { flex-grow: 1; }
 
 h2 { margin-top: 0; }
 
@@ -60,6 +67,7 @@ h2 { margin-top: 0; }
 
 .form { display: grid; gap: .75rem; }
 .field { display: grid; gap: .25rem; }
+
 label { font-size: .95rem; color: #d1d5db; }
 input {
   width: 100%;
@@ -87,12 +95,28 @@ input:focus {
   letter-spacing: .5px;
   cursor: pointer;
   transition: transform .02s ease-in;
+  margin-left: 10px;
 }
 .btn:active { transform: translateY(1px); box-shadow: 0 2px 0 #1e40af; }
+.btn.secondary { background:#6b7280; }
+.btn.danger    { background:#dc2626;  }
+
 
 .link { color: #93c5fd; }
 .link:focus { outline: 2px solid #60a5fa; outline-offset: 2px; }
 .muted { color: #cbd5e1; font-size: .95rem; }
+
+
+/* HOME (aqui mero no [pasa nada o si? ahi veremos) */
+/* Mensajes */
+.msg { margin:.75rem 0; padding:.5rem .75rem; border-radius:8px; background:#111827; color:#e5e7eb; border:1px solid #374151; }
+.msg.success { background:#065f46; border-color:#064e3b; }
+.msg.error   { background:#7f1d1d; border-color:#991b1b; }
+
+/* Grid de proyectos */
+.grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.proj-card { display:grid; gap:.5rem; }
+.proj-img { width:100%; height:140px; object-fit:cover; border-radius:8px; }
 
 /* Responsivo */
 @media (min-width: 768px) {

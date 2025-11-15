@@ -3,19 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Backoffice | Home</title>
+  <title>Home</title>
   <link rel="stylesheet" href="./css/styles.css" />
-  <script>
-    
-    window.location.replace('./index.html');
-  </script>
+  <script defer src="./js/app.js"></script>
 </head>
-<body>
-  <main class="container">
-    <section class="card">
-      <h2>Home</h2>
-      <p>Deberaas haber sido redirigido a Login en teoria. <a href="./index.html">Ir a Login</a>.</p>
-    </section>
-  </main>
+<body data-page="home">
+  <header class="toolbar card">
+    <h1 class="scribble"  style="margin:0">Proyectos</h1>
+    <div class="grow"></div>
+    <button id="toggle-form" class="btn secondary">+ Agregar</button>
+    <button id="logout" class="btn danger">Cerrar sesión</button>
+  </header>
+
+   <main class="container">
+    <div id="msg" class="msg" hidden></div>
+
+    
+     <form id="project-form" class="card hidden" autocomplete="off">
+      <input type="hidden" name="projectId" />
+      <div class="field">
+        <label for="title">Título</label>
+        <input id="title" name="title" required />
+      </div>
+      <div class="field">
+        <label for="description">Descripción</label>
+        <input id="description" name="description" />
+      </div>
+      <div class="field">
+        <label for="technologies">Tecnologías (CSV)</label>
+        <input id="technologies" name="technologies" placeholder="html,css,js" />
+      </div>
+      <div class="field">
+        <label for="repository">Repositorio (URL)</label>
+        <input id="repository" name="repository" placeholder="https://github.com/..." />
+      </div>
+      <div class="field">
+        <label for="images">Imágenes (URLs CSV)</label>
+        <input id="images" name="images" placeholder="https://.../a.png, https://.../b.jpg" />
+      </div>
+      <button class="btn" type="submit">Guardar</button>
+    </form>
+
+     <section id="projects-panel" class="grid"></section>
+
+    
+    <template id="project-tpl">
+      <article class="card proj-card">
+        <img data-img alt="" class="proj-img" />
+        <h3 data-title></h3>
+        <p data-desc></p>
+        <p><a data-url target="_blank" rel="noopener">Repositorio</a></p>
+        <div class="row">
+          <button class="btn" data-edit>Editar</button>
+          <button class="btn danger" data-del>Eliminar</button>
+        </div>
+      </article>
+    </template>
+
+   </main>
 </body>
 </html>
