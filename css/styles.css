@@ -118,6 +118,70 @@ input:focus {
 .proj-card { display:grid; gap:.5rem; }
 .proj-img { width:100%; height:140px; object-fit:cover; border-radius:8px; }
 
+
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(17,17,17,.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid #27272a;
+}
+
+.nav-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: .75rem 1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  color: #e5e7eb; text-decoration: none;
+}
+
+.nav-links { display: flex; gap: .25rem; }
+.nav-links a {
+  color: #cbd5e1; text-decoration: none;
+  padding: .5rem .75rem; border-radius: .5rem;
+}
+.nav-links a:hover,
+.nav-links a.active { background: #111827; color: #fff; }
+
+.nav-actions { display: flex; gap: .5rem; align-items: center; }
+
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  background: transparent; border: 0;
+  color: #e5e7eb; font-size: 1.5rem; line-height: 1;
+  padding: .25rem .5rem; cursor: pointer;
+}
+
+
+.nav-drawer {
+  display: none;
+  border-top: 1px solid #27272a;
+  background: rgba(17,17,17,.98);
+  padding: .75rem 1rem;
+}
+.nav-drawer.show { display: block; }
+.nav-drawer a {
+  display: block;
+  color: #cbd5e1; text-decoration: none;
+  padding: .5rem 0;
+}
+.nav-drawer a.active { color: #fff; }
+.nav-drawer-actions { display: flex; gap: .5rem; margin-top: .5rem; }
+
+/* Responsive: colapsa enlaces y acciones en móvil */
+@media (max-width: 720px) {
+  .nav-links, .nav-actions { display: none; }
+  .nav-toggle { display: block; }
+}
+
+/* Opcional: separa un poco el contenido del navbar */
+body[data-page="home"] .container { margin-top: 1rem; }
+
 /* Responsivo */
 @media (min-width: 768px) {
   .container { max-width: 520px; }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Proyecto</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script defer src="./js/app.js"></script>
+</head>
+<body data-page="project-new">
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand scribble" href="./home.html">Backoffice</a>
+      <div class="grow"></div>
+      <button id="logout" class="btn danger">Cerrar sesión</button>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false"
+              aria-controls="nav-drawer" aria-label="Abrir menú">☰</button>
+    </div>
+    <div id="nav-drawer" class="nav-drawer" hidden>
+      <div class="nav-drawer-actions">
+        <button id="logout-m" class="btn danger">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 class="scribble">Nuevo proyecto</h2>
+      <div id="msg" class="msg" hidden></div>
+
+      <form id="project-new-form" class="form" autocomplete="off">
+        <div class="field">
+          <label for="title">Título</label>
+          <input id="title" name="title" required />
+        </div>
+        <div class="field">
+          <label for="description">Descripción</label>
+          <input id="description" name="description" />
+        </div>
+        <div class="field">
+          <label for="technologies">Tecnologías (CSV)</label>
+          <input id="technologies" name="technologies" placeholder="html,css,js" />
+        </div>
+        <div class="field">
+          <label for="repository">Repositorio (URL)</label>
+          <input id="repository" name="repository" placeholder="https://github.com/..." />
+        </div>
+        <div class="field">
+          <label for="images">Imágenes (URLs CSV)</label>
+          <input id="images" name="images" placeholder="https://.../a.png, https://.../b.jpg" />
+        </div>
+
+        <div class="row">
+          <button class="btn" type="submit">Guardar</button>
+          <a class="btn secondary" href="./home.html">Cancelar</a>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
