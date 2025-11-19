@@ -28,15 +28,21 @@ async function request(path, { method='GET', body, auth=true } = {}) {
 }
 
 
-function showMsg(text, type='info') {
-  const box = document.getElementById('msg');
-  if (!box) { alert(text); return; }
+function showMsg(text, type = 'info') {
+  let box = document.getElementById('msg');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'msg';
+    box.className = 'msg toast';
+    document.body.appendChild(box);
+  }
   box.textContent = text;
-  box.className = `msg ${type}`;
+  box.className = `msg ${type} ${box.classList.contains('toast') ? 'toast' : ''}`;
   box.hidden = false;
   clearTimeout(showMsg._t);
   showMsg._t = setTimeout(() => (box.hidden = true), 3000);
 }
+
 const parseCSV = (s) => (s||'').split(',').map(x=>x.trim()).filter(Boolean);
 const qp = (k) => new URLSearchParams(location.search).get(k);
 
@@ -63,10 +69,13 @@ function initRegister() {
     if (password !== password2) return showMsg('Las contraseñas no coinciden','error');
     if (!/^\d{6}$/.test(itsonId)) return showMsg('ITSON ID debe ser de 6 dígitos','error');
 
+    // no lo cale, a ver si jala
     try {
-      await request('/auth/register', { method:'POST', body:{ name, email, itsonId, password }, auth:false });
+      await request('/auth/register', {
+         method:'POST', body:{ name, email, itsonId, password }, 
+         auth:false });
       showMsg('Registro exitoso. Redirigiendo a Login…','success');
-      setTimeout(()=>location.href='./index.html',300);
+      setTimeout(()=>location.href='./index.html',1200);
     } catch (err) { showMsg(err.message,'error'); }
   });
 }
@@ -90,7 +99,7 @@ function initLogin() {
 function initNavbarCommon() {
   const navToggle = document.getElementById('nav-toggle');
   const drawer = document.getElementById('nav-drawer');
-  
+
   navToggle?.addEventListener('click', () => {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!expanded));

@@ -113,6 +113,14 @@ input:focus {
 .msg.success { background:#065f46; border-color:#064e3b; }
 .msg.error   { background:#7f1d1d; border-color:#991b1b; }
 
+.msg.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  min-width: 240px;
+}
+
 /* Grid de proyectos */
 .grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .proj-card { display:grid; gap:.5rem; }
