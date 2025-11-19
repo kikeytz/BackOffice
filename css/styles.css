@@ -173,14 +173,24 @@ input:focus {
 .nav-drawer a.active { color: #fff; }
 .nav-drawer-actions { display: flex; gap: .5rem; margin-top: .5rem; }
 
-/* Responsive: colapsa enlaces y acciones en móvil */
+body[data-page="home"] .container { margin-top: 1rem; }
+
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .25rem 0 .5rem; }
+.tag {
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  background: #111827;
+  border: 1px solid #374151;
+  font-size: .85rem;
+  color: #e5e7eb;
+}
+
 @media (max-width: 720px) {
   .nav-links, .nav-actions { display: none; }
   .nav-toggle { display: block; }
 }
 
-/* Opcional: separa un poco el contenido del navbar */
-body[data-page="home"] .container { margin-top: 1rem; }
 
 /* Responsivo */
 @media (min-width: 768px) {

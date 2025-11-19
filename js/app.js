@@ -66,7 +66,7 @@ function initRegister() {
     try {
       await request('/auth/register', { method:'POST', body:{ name, email, itsonId, password }, auth:false });
       showMsg('Registro exitoso. Redirigiendo a Login…','success');
-      setTimeout(()=>location.href='./index.html',800);
+      setTimeout(()=>location.href='./index.html',300);
     } catch (err) { showMsg(err.message,'error'); }
   });
 }
@@ -90,6 +90,7 @@ function initLogin() {
 function initNavbarCommon() {
   const navToggle = document.getElementById('nav-toggle');
   const drawer = document.getElementById('nav-drawer');
+  
   navToggle?.addEventListener('click', () => {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!expanded));
@@ -107,6 +108,16 @@ function initHome() {
   renderProjects();
 }
 
+function isValidUrl(str) {
+  try { new URL(str); return true; } catch { return false; }
+}
+
+function toArrayMaybe(v) {
+  if (Array.isArray(v)) return v;
+  if (typeof v === 'string') return v.split(',').map(s => s.trim()).filter(Boolean);
+  return [];
+}
+
 async function renderProjects() {
   const panel = document.getElementById('projects-panel');
   const tpl   = document.getElementById('project-tpl');
@@ -116,7 +127,7 @@ async function renderProjects() {
     const projects = await request('/projects', { method:'GET' });
     panel.innerHTML = '';
     if (!Array.isArray(projects) || projects.length === 0) {
-      panel.innerHTML = '<p class="muted">Sin proyectos.</p>'; return;
+      panel.innerHTML = '<p class="muted">Sin proyectos we.</p>'; return;
     }
 
     // esto estuvo chistoso de hacer
@@ -131,9 +142,34 @@ async function renderProjects() {
       a.href = p.repository || '#';
       a.textContent = p.repository ? 'Repositorio' : '—';
 
-      const img = el.querySelector('[data-img]');
-      const firstImg = Array.isArray(p.images) && p.images.length ? p.images[0] : '';
-      if (firstImg) { img.src = firstImg; img.alt = p.title || 'Proyecto'; } else { img.remove(); }
+        const imgEl = el.querySelector('[data-img]');
+      const imgs = toArrayMaybe(p.images);
+      let firstImg = imgs[0] || p.image || '';
+      if (!isValidUrl(firstImg)) firstImg = ''; 
+
+      if (firstImg) {
+        imgEl.src = firstImg;
+        imgEl.alt = p.title || 'Proyecto';
+        // por si falla la imagen
+        imgEl.addEventListener('error', () => imgEl.remove());
+      } else {
+        imgEl.remove();
+      }
+
+       const techWrap = el.querySelector('[data-techs]');
+      const techs = toArrayMaybe(p.technologies);
+      if (techs.length) {
+        techWrap.innerHTML = '';
+        techs.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'tag';
+          span.textContent = t;
+          techWrap.appendChild(span);
+        });
+      } else {
+        techWrap.remove();
+      }
+      
 
       // Editar 
       el.querySelector('[data-edit]').addEventListener('click', () => {
@@ -170,7 +206,7 @@ function initProjectNew() {
     const payload = {
       title: document.getElementById('title').value.trim(),
       description: document.getElementById('description').value.trim(),
-      userId: user.id || user._id,                 // requerido
+      userId: user.id || user._id,                 
       technologies: parseCSV(document.getElementById('technologies').value),
       repository: document.getElementById('repository').value.trim() || undefined,
       images: parseCSV(document.getElementById('images').value),
